@@ -21,9 +21,21 @@ Or install it yourself as:
     $ gem install scraper_google_play
 
 ## Usage
+Get info a app
+```
+    ScrapperGooglePlay.App('com.webmely.serverlist').info
+```
 
-TODO: Write usage instructions here
+Get list apps in a category
+```
+    ScrapperGooglePlay.Category('entertaiment').all_app
+    ScrapperGooglePlay.Category('entertaiment').topselling_free 
+```
 
+Get apps result with keyword
+```
+    ScrapperGooglePlay.Search('keyword').apps
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
