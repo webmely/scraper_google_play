@@ -1,5 +1,4 @@
 class ScraperGooglePlay::Base
-
   def exist?(url)
   	uri = URI("#{url}")
 		status_code = Net::HTTP.get_response(uri).code
