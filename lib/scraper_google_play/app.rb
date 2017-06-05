@@ -36,7 +36,7 @@ class ScraperGooglePlay::App < ScraperGooglePlay::Base
 			title: detailsInfo.at('.document-title').text.strip,
 			genre_text: mainGenre.text().strip,
 			genre_id: mainGenre.attr('href').split('/')[4],
-			version: @page.at('.details-section-contents div.content[itemprop="softwareVersion"]').text().strip(),
+			version: @page.at('.details-section-contents div.content[itemprop="softwareVersion"]') ? @page.at('.details-section-contents div.content[itemprop="softwareVersion"]').text().strip() : nil,
 			description: @page.at('.details-section-contents div[itemprop=description] div').text().gsub(/<\/p>/, '\n</p>'),
 			android_version_text: android_version_text,
 			android_version: normalizeAndroidVersion(android_version_text),
@@ -79,5 +79,11 @@ class ScraperGooglePlay::App < ScraperGooglePlay::Base
 		elem ? "http:#{elem.first.attributes["src"].text}" : ""
   end
 
-
+  def screen_shots
+  	screen_shot_urls = []
+		@page.search("img.full-screenshot").each do |img|
+			screen_shot_urls << "http:#{img.attributes["src"].text}"
+		end
+		screen_shot_urls
+  end
 end

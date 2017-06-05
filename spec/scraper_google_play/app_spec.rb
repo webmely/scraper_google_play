@@ -12,14 +12,14 @@ describe ScraperGooglePlay::App do
   end 
   
   it 'connects to app and get info' do
-    app = ScraperGooglePlay::App.new('com.tigrido.dictator2.free')
+    app = ScraperGooglePlay::App.new('com.ekesoo.font')
     app_invalid = ScraperGooglePlay::App.new('com.webmely.serverlist1234')
     expect(app.info).to_not eq(nil)
     expect(app_invalid.info).to eq({})
   end
 
   it 'similar app ' do
-    app = ScraperGooglePlay::App.new('com.tigrido.dictator2.free')
+    app = ScraperGooglePlay::App.new('com.ekesoo.font')
     app_invalid = ScraperGooglePlay::App.new('com.webmely.serverlist1234')
     expect(app.similar_app).to_not eq(nil)
     expect(app_invalid.similar_app).to eq(nil)
